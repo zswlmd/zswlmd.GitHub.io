@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style>
+			@keyframes move {
+				from {
+					left: 0;
+				}
+				to {
+					left: -100%;
+				}
+			}
+			@keyframes fudong {
+				from {
+					top: -20px;
+				}
+				to {
+					top: 20px;
+				}
+			}
+			@keyframes changeImg {
+				from {background-image: url(images/bird0.png);}
+				to {background-image: url(images/bird1.png);}
+			}
+			@keyframes birdUp {
+				from {background-image: url(images/up_bird0.png)}
+				to {background-image: url(images/up_bird1.png)}
+			}
+			@keyframes birdDown {
+				from {background-image: url(images/down_bird0.png)}
+				to {background-image: url(images/down_bird1.png)}
+			}
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			#wrap {
+				width: 320px;
+				height: 568px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#bg {
+				width: 200%;
+				height: 100%;
+				position: absolute; 	
+				animation: move 2s linear infinite;
+			}
+			#bg img {
+				width: 50%;
+				height: 100%;
+				float: left;
+			}
+			#score {
+				height: 40px;
+				width: 100%;
+				position: absolute;
+				text-align: center;
+				top: 60px;
+			}
+			#score img{
+				width: 28px;
+				height: 39px;
+			}
+			
+			#start {
+				width: 100%;
+				height: 40%;
+				position: absolute;
+				top: 150px;
+			}
+			#fudong {
+				width: 100%;
+				height: 50%;
+				display: flex;
+				justify-content: center;
+				position: absolute;
+				animation: fudong 2s linear infinite alternate;
+			}
+			#fudong div:nth-of-type(1) {
+				width: 236px;
+				height: 77px;
+				background-image: url(images/head.png);
+			}
+			#fudong div:nth-of-type(2) {
+				width: 40px;
+				height: 26px;
+				background-image: url(images/bird0.png);
+				margin-top: 25px;
+				animation: changeImg .3s linear infinite;
+			}
+			#begin {
+				width: 96px;
+				height: 33px;
+				position: absolute;
+				left: 50%;
+				margin-left: -48px;
+				bottom: 0;
+				background-image: url(images/ok.png);
+			}
+			#bird {
+				width: 40px;
+				height: 30px;
+				position: absolute;
+				top: 150px;
+				left: 10%;
+				animation: birdDown .3s linear infinite;
+				background-image: url(images/bird0.png);
+				background-repeat: no-repeat;
+				display: none;
+			}
+			#pipe {
+				height: 100%;
+			}
+			li {
+				width: 62px;
+				left: 100%;
+				position: absolute; 
+			}
+			#pipe .top {
+				top: 0;
+			}
+			#pipe .bottom {
+				bottom: 0;
+			}
+			#pipe .top div:nth-of-type(1) {
+				background-image: url(images/up_mod.png);
+			}
+			#pipe .top div:nth-of-type(2) {
+				height: 60px;
+				background-image: url(images/up_pipe.png);
+			}
+			
+			#pipe .bottom div:nth-of-type(1) {
+				height: 60px;
+				background-image: url(images/down_pipe.png);
+			}
+			#pipe .bottom div:nth-of-type(2) {
+				background-image: url(images/down_mod.png);
+			}
+			#over{
+				width: 100%;
+				height: 60%;
+				position: absolute;
+				top: 20%;
+				text-align: center;
+				display: none;
+			}
+			#over div{
+				margin: 20% auto 10%;
+				width: 269px;
+				height: 135px;
+				background-image: url(images/message.png);
+				position: relative;
+			}
+			#over div p{
+				position: absolute;
+				width: 60px;
+				height: 20px;
+				line-height: 20px;
+				text-align: right;
+				right: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--loading-->
+		<!--<p></p>-->
+		<div id="wrap">
+			<div id="bg">
+				<img src="images/bg.png" alt="" />
+				<img src="images/bg.png"/>
+			</div>
+			<div id="score">
+				<img src="images/0.png"/>
+			</div>
+			<div id="start">
+				<div id="fudong">
+					<div></div>
+					<div></div>
+				</div>
+				<div id="begin"></div>
+			</div>
+			<div id="bird"></div>
+			<!--管道-->
+			<ul id="pipe">
+				
+			</ul>
+			<div id="over">
+				<img src="images/game_over.png" alt="" />
+				<div>
+					<p id="nowScore">0</p>
+					<p id="bestScore">0</p>
+				</div>
+				<img id="reStart" src="images/ok.png"/>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/isPc.js"></script>
+	<script src="js/bird.js"></script>
+</html>

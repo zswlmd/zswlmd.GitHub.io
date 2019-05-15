@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+	</head>
+	<body>
+		<input id="user" type="text" placeholder="请输入用户名" />
+		<br />
+		<input id="pwd" type="password" placeholder="请输入密码" />
+		<br />
+		<button onclick="register()">注册</button>
+	</body>
+	<script>
+		console.log(localStorage);
+		var userIpt = document.getElementById("user");
+		var pwdIpt = document.getElementById("pwd");
+		
+		function register() {
+			if (userIpt.value && pwdIpt.value) {
+//				判断是否已经注册了
+				var strUsers = localStorage.users;
+				var arrUsers = (strUsers || "").split(",");
+				for (var i=0;i<arrUsers.length; i++) {
+					var str = arrUsers[i];
+					str = str.split("=")[0];
+					if (userIpt.value == str) {
+						alert("该用户已经注册过了！");
+						return;
+					}
+				}
+				
+				
+				var arr = [userIpt.value,pwdIpt.value];
+				var str = arr.join("=");
+				localStorage.users = str + "," + localStorage.users;
+			} else {
+				console.log("请输入用户名和密码")
+			}
+		}
+		
+		
+	</script>
+</html>

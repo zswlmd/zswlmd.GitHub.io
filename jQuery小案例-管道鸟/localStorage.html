@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>我是登录页面</h1>
+		<input id="user" type="text" placeholder="请输入用户名" />
+		<br />
+		<input id="pwd" type="password" placeholder="请输入密码" />
+		<br />
+		<button onclick="login()">登录</button>
+	</body>
+	<script>
+		var userIpt = document.getElementById("user");
+		var pwdIpy = document.getElementById("pwd");
+		
+		function login(){
+			if (userIpt.value &&pwdIpy.value){
+//				1.先将用户名和密码存储到localstorage中
+               localStorage.userName = userIpt.value;
+               localStorage.Password = pwdIpy.value;
+               location.href = "home.html";
+			}else{
+				alert("请输入用户名和密码")
+			}
+		}
+	</script>
+</html>

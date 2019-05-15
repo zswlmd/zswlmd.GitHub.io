@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>欢迎来到英雄联盟！</h1>
+		<p id="welcome"></p>
+	</body>
+	<script>
+		var p = document.getElementById("welcome");
+		if (localStorage.userName){
+			p.innerHTML = "欢迎回来"+localStorage.userName;
+		}else{
+			p.innerHTML = "请先登录，页面跳转中";
+			setTimeout(function(){
+				location.href = "localStorage.html";
+			},3000)
+		}
+	</script>
+</html>
